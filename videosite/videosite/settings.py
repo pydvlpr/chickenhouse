@@ -25,7 +25,7 @@ SECRET_KEY = '077%e^g0l%cidkt%q0!1#u1w&)iw^#!fbochw4hu_1rp_a$_sf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [i'127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'videosite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'videositedb.sqlite3',
     }
 }
 
