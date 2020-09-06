@@ -1,0 +1,116 @@
+
+{% extends "videosite/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <h1>Kameras</h1>
+            {% if kunden_liste %}
+                <table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Aktion</th>
+                            <th>Kamera-Nr.</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            {% for kunde in kunden_liste %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'modify_camera' pk=cam.id %}">
+                                            <img src="{% static 'videosite/ico/edit.svg' %}"
+                                            title="Kamera ändern"
+                                            height="20" width="20"
+                                            >
+                                        </a>
+                                        <a href="{% url 'remove_camera' pk=cam.id %}">
+                                            <img src="{% static 'videosite/ico/delete.svg' %}"
+                                            title="Kamera entfernen"
+                                            height="20" width="20"
+                                            >
+                                        </a>
+                                    </td>
+                                    <td>{{cam.id}}</td>
+                                    <td>{{cam.name}}</td>
+                                    <td>{{cam.position}}</td>
+                                    <td>{{cam.url}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+                {% else %}
+                    <p>Es sind aktuell keine Kameras verfügbar.</p>
+                {% endif %}
+        </div>
+        <div class="container">
+            <p>
+            <a href="{% url 'create_camera' %}" class="btn btn-primary">Kamera hinzufügen</a>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
+            </p>
+        </div>
+    {% else %}
+        <div style="color:red">
+            <h2>Fehler bei der Authentifizierung</h2>
+            <p>Sie dürfen diese Seite nicht anzeigen.</p>
+            <p>Bitte melden Sie sich an.</p>
+        </div>
+    {% endif %}
+
+<!--
+    <script>
+    $.noConflict();
+    jQuery(document).ready( function ($)
+    {
+        $('#dataTable').DataTable( {
+                "language": {
+                    //"url": "/videosite/static/lokale/dataTables.german.lang"
+
+                            "sEmptyTable":      "Keine Daten in der Tabelle vorhanden",
+                            "sInfo":            "_START_ bis _END_ von _TOTAL_ Einträgen",
+                            "sInfoEmpty":       "Keine Daten vorhanden",
+                            "sInfoFiltered":    "(gefiltert von _MAX_ Einträgen)",
+                            "sInfoPostFix":     "",
+                            "sInfoThousands":   ".",
+                            "sLengthMenu":      "_MENU_ Einträge anzeigen",
+                            "sLoadingRecords":  "Wird geladen ..",
+                            "sProcessing":      "Bitte warten ..",
+                            "sSearch":          "Suchen",
+                            "sZeroRecords":     "Keine Einträge vorhanden",
+                            "oPaginate": {
+                                "sFirst":       "Erste",
+                                "sPrevious":    "Zurück",
+                                "sNext":        "Nächste",
+                                "sLast":        "Letzte"
+                            },
+                            "oAria": {
+                                "sSortAscending":  ": aktivieren, um Spalte aufsteigend zu sortieren",
+                                "sSortDescending": ": aktivieren, um Spalte absteigend zu sortieren"
+                            },
+                            "select": {
+                                "rows": {
+                                    "_": "%d Zeilen ausgewählt",
+                                    "0": "",
+                                    "1": "1 Zeile ausgewählt"
+                                }
+                            },
+                            "buttons": {
+                                "print":    "Drucken",
+                                "colvis":   "Spalten",
+                                "copy":     "Kopieren",
+                                "copyTitle":    "In Zwischenablage kopieren",
+                                "copyKeys": "Taste <i>ctrl</i> oder <i>\u2318</i> + <i>C</i> um Tabelle<br>in Zwischenspeicher zu kopieren.<br><br>Um abzubrechen die Nachricht anklicken oder Escape drücken.",
+                                "copySuccess": {
+                                    "_": "%d Spalten kopiert",
+                                    "1": "1 Spalte kopiert"
+                                }
+                            }
+                        }
+                });
+    } );
+    </script>
+-->
+{% endblock %}

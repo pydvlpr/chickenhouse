@@ -1,0 +1,38 @@
+{% extends "videosite/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        {% if error_message %}
+            <!--
+            {% if x_object %}
+                <div class="container">
+                    <h2  style="color:red">{{error_message}}</h2>
+                    <table class="table table-responsive">
+                    </table>
+                </div>
+            {% elif y_object %}
+                <div class="container">
+                    <h2  style="color:red">{{error_message}}</h2>
+                    <table class="table table-responsive">
+                    </table>
+                </div>
+            {% else %}
+                <div class="container">
+                    <h2  style="color:red">{{error_message}}</h2>
+                </div>
+            {% endif %}
+        {% else %}
+        -->
+        <div style="color:blue" class='container'>
+            <p>Ein Fehler ist aufgetreten: %error_message%</p>
+        </div>
+
+        {% endif %}
+        <div class="container">
+            <p>
+            <a href="{% url 'cam_list' %}" class="btn btn-secondary">Zurück</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

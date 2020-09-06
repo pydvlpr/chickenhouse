@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+	{% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Ela's Chickenhouse</title>
+
+    <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="{% static 'videosite/css/bootstrap.min.css' %}">
+
+	 <!--Bootstrape and Co.-->
+    <!--
+    <script src="{% static 'videosite/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'videosite/js/popper.min.js' %}"></script>
+    -->
+    <script src="{% static 'videosite/js/bootstrap.min.js' %}"></script>
+	 
+    <!-- Eigenes CSS -->
+    <link href="{% static 'videosite/css/main.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Ela's Chickenhouse</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Übersicht</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+		
+	   {% if user.is_authenticated %}
+      <p align="center">
+            <a class="btn btn-danger btn-sm" href="{% url 'logout'%}">Logout</a>
+        </p>
+
+        {% else %}
+		<div class="starter-template">
+			<h1>Login</h1>
+			{% if form.errors %}
+				<p>Benutzername oder Password sind ungültig. Versuchen Sie es noch einmal.</p>
+			{% endif %}
+			
+			
+			<form method="post" action="{% url 'login' %}">
+			{% csrf_token %}
+			<div style="margin: 20px 0px">
+				<table align="center" >
+					<div>
+						<tr>
+						  <td>{{ form.username.label_tag }}</td>
+						  <td>{{ form.username }}</td>
+						</tr>
+					</div>
+					<div>
+						<tr>
+						  <td>{{ form.password.label_tag }}</td>
+						  <td>{{ form.password }}</td>
+						<tr>
+					</div>
+				</table>
+			</div>
+			<div>
+			  <input class="btn btn-outline-dark btn-lg" type="submit" value="login" />
+			  <a href="javascript:history.go(-1)" class="btn btn-outline-secondary btn-lg">abbrechen</a>
+			  <input type="hidden" name="next" value="{{ next }}" />
+			</div>
+			</form>
+		</div>
+        {% endif %}
+		
+      
+
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!--
+    <script src="{% static 'videosite/js/popper.min.js' %}"></script> 
+    -->
+    <script src="{% static 'videosite/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
