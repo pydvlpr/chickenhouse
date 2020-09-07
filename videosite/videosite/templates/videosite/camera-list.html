@@ -1,6 +1,6 @@
 
 {% extends "videosite/base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block content %}
     <div class="container">
@@ -48,7 +48,7 @@
         </div>
         <div class="container">
             <p>
-            <a href="{% url 'create_camera' %}" class="btn btn-primary">Kamera hinzufügen</a>
+            <a href="{% url 'create_cam' %}" class="btn btn-primary">Kamera hinzufügen</a>
             <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
             </p>
         </div>
