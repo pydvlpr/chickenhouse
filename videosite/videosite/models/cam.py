@@ -2,14 +2,16 @@ from django.db import models
 
 class Cam(models.Model):
     """
-        Stream represents a video stream
+        Cam represents a video camera
     """
     class Meta:
-        ordering = ["id"]
+        ordering = ["id","name"]
         unique_together =(("id","name"))
 
-        name = models.CharField(max_length=100)
-        position=models.CharField(max_length=200)
-        url = models.CharField(max_length=500)
+    name = models.CharField(max_length=100)
+    host = models.CharField(max_length=50)
+    position=models.CharField(max_length=200)
+    img_url = None
+    stream_url = None    
 
     pass
