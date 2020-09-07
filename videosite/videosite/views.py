@@ -35,7 +35,7 @@ class CreateCam(CreateView):
     template_name = 'cam_create_form.html'
     model = Cam
 
-    fields = ['name','position','url']
+    fields = ['host','name','position','img_url','stream_url']
 
     success_url = reverse_lazy('cam_list')
 
@@ -96,7 +96,7 @@ class ModifyCam(UpdateView):
     template_name = 'cam_modify_form.html'
     model = Cam
 
-    fields = ['name','position','url']
+    fields = ['host','name','position','img_url','stream_url']
 
     success_url = reverse_lazy('cam_list')
 
