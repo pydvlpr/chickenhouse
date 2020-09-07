@@ -11,7 +11,7 @@ class Cam(models.Model):
     name = models.CharField(max_length=100)
     host = models.CharField(max_length=50)
     position=models.CharField(max_length=200)
-    img_url = None
-    stream_url = None    
+    img_url = models.CharField(max_length=200,default=" ")
+    stream_url = models.CharField(max_length=200,default=" ")
 
     pass
