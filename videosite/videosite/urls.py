@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+#from django.contrib import admin
 from django.urls import path, re_path, reverse
 from . import views
 
@@ -22,17 +22,17 @@ urlpatterns = [
     path('',views.cam_list, name='index'),
 
     # cam preview
-    path('preview/',views.cam_preview, name='cam_preview'),
+    path('preview/',views.CamPreview, name='cam_preview'),
 
     # cam list
     path('cams/',views.cam_list, name='cam_list'),
 
     # cam forms
-    path('cam/new/', views.create_cam.as_view(), name='create_cam'),
-    path('cam/modify/<int:pk>/', views.modify_cam.as_view(), name='modify_cam'),
-    path('cam/details/<int:pk>/', views.cam_details.as_view(), name='cam_details'),
-    path('cam/delete/<int:pk>/', views.delete_cam.as_view(), name='delete_cam'),
+    path('cam/new/', views.CreateCam.as_view(), name='create_cam'),
+    path('cam/modify/<int:pk>/', views.ModifyCam.as_view(), name='modify_cam'),
+    path('cam/details/<int:pk>/', views.CamDetails.as_view(), name='cam_details'),
+    path('cam/delete/<int:pk>/', views.DeleteCam.as_view(), name='delete_cam'),
 
     # admin
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 ]
