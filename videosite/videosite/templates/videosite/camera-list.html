@@ -6,28 +6,30 @@
     <div class="container">
         {% if user.is_authenticated %}
             <h1>Kameras</h1>
-            {% if kunden_liste %}
+            {% if cam_list %}
                 <table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>Aktion</th>
                             <th>Kamera-Nr.</th>
+                            <th>Host</th>
                             <th>Name</th>
                             <th>Position</th>
-                            <th>URL</th>
+                            <th>Img URL</th>
+                            <th>Steam URL</th>
                         </tr>
                     </thead>
                         <tbody>
-                            {% for kunde in kunden_liste %}
+                            {% for cam in cam_list %}
                                 <tr>
                                     <td>
-                                        <a href="{% url 'modify_camera' pk=cam.id %}">
+                                        <a href="{% url 'modify_cam' pk=cam.id %}">
                                             <img src="{% static 'videosite/ico/edit.svg' %}"
                                             title="Kamera ändern"
                                             height="20" width="20"
                                             >
                                         </a>
-                                        <a href="{% url 'remove_camera' pk=cam.id %}">
+                                        <a href="{% url 'remove_cam' pk=cam.id %}">
                                             <img src="{% static 'videosite/ico/delete.svg' %}"
                                             title="Kamera entfernen"
                                             height="20" width="20"
@@ -35,9 +37,11 @@
                                         </a>
                                     </td>
                                     <td>{{cam.id}}</td>
+                                    <td>{{cam.host}}</td>
                                     <td>{{cam.name}}</td>
                                     <td>{{cam.position}}</td>
-                                    <td>{{cam.url}}</td>
+                                    <td>{{cam.img_url}}</td>
+                                    <td>{{cam.stream_url}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
