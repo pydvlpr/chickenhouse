@@ -1,4 +1,5 @@
 from django.db import models
+from .cam import Cam
 
 class Preview(models.Model):
     """
@@ -6,10 +7,10 @@ class Preview(models.Model):
     """
     class Meta:
         ordering = ["id"]
-        unique_together =(("id","name"))
+        #unique_together =(("id","name"))
 
     # just testing
-    preview_cam = models.ForeignKey(models.Cam,unique=True)
+    preview_cam = models.ForeignKey(Cam,unique=True,on_delete=models.CASCADE)
     pic_url = models.CharField(max_length=500)
 
     pass
