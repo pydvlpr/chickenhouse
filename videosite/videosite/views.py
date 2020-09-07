@@ -56,6 +56,8 @@ class CreateCam(CreateView):
         form = super(CreateCam, self).get_form(form_class)
         form.fields['host'].required = True
         form.fields['name'].required = True
+        form.fields['img_url'].required = False
+        form.fields['stream_url'].required = False
         
 
         # Form-Felder modifizieren
@@ -75,15 +77,15 @@ class CreateCam(CreateView):
                                                                         'data-placement':'right',
                                                                         'data-container':'body'})
 
-        form.fields['preview_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
-                                                                        'data-content':"URL der Kamera eingeben.",
-                                                                        'data-placement':'right',
-                                                                        'data-container':'body'})
+        #form.fields['img_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
+        #                                                                'data-content':"URL der Kamera eingeben.",
+        #                                                                'data-placement':'right',
+        #                                                                'data-container':'body'})
         
-        form.fields['stream_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
-                                                                        'data-content':"URL der Kamera eingeben.",
-                                                                        'data-placement':'right',
-                                                                        'data-container':'body'})
+        #form.fields['stream_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
+        #                                                                'data-content':"URL der Kamera eingeben.",
+        #                                                                'data-placement':'right',
+        #                                                                'data-container':'body'})
 
         
         return form
@@ -111,6 +113,7 @@ class ModifyCam(UpdateView):
         form = super(CreateCam, self).get_form(form_class)
         form.fields['host'].required = True
         form.fields['name'].required = True
+        form.fields['img_url'].readonly = True
         
 
         # Form-Felder modifizieren
@@ -131,7 +134,7 @@ class ModifyCam(UpdateView):
                                                                         'data-placement':'right',
                                                                         'data-container':'body'})
 
-        form.fields['preview_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
+        form.fields['img_url'].widget = forms.TextInput(attrs={ 'class':'has-popover',
                                                                         'data-content':"URL der Kamera eingeben.",
                                                                         'data-placement':'right',
                                                                         'data-container':'body'})
