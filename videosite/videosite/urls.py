@@ -15,9 +15,11 @@ Including another URLconf
 """
 #from django.contrib import admin
 from django.urls import path, re_path, reverse
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
+
     #index page
     path('',views.cam_list, name='index'),
 
