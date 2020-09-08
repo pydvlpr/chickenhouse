@@ -27,7 +27,7 @@ urlpatterns = [
     path('preview/',views.CamPreview, name='cam_preview'),
 
     # cam stream
-    path('preview/',views.CamStream, name='cam_stream'),
+    path('stream/',views.CamStream, name='cam_stream'),
 
 
     # cam list
