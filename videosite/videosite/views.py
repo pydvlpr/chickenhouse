@@ -56,6 +56,8 @@ class CreateCam(CreateView):
         form = super(CreateCam, self).get_form(form_class)
         form.fields['host'].required = True
         form.fields['name'].required = True
+        form.fields['position'].required = False
+        form.fields['img_url'].readonly = True
         form.fields['img_url'].required = False
         form.fields['stream_url'].required = False
         
@@ -95,11 +97,11 @@ class ModifyCam(UpdateView):
         Modify camera settings by form
     """
 
-    template_name = 'cam_modify_form.html'
+    
     model = Cam
-
     fields = ['host','name','position','img_url','stream_url']
 
+    template_name = 'cam_modify_form.html'
     success_url = reverse_lazy('cam_list')
 
     class Meta:
@@ -113,7 +115,10 @@ class ModifyCam(UpdateView):
         form = super(CreateCam, self).get_form(form_class)
         form.fields['host'].required = True
         form.fields['name'].required = True
+        form.fields['position'].required = False
         form.fields['img_url'].readonly = True
+        form.fields['img_url'].required = False
+        form.fields['stream_url'].required = False
         
 
         # Form-Felder modifizieren
