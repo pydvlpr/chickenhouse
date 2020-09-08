@@ -48,7 +48,7 @@
     <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="">Ela's Chickenhouse
-            <img src="{% static 'videosite/img/Light_sussex_hen_bw.jpg' %}" height="35" width="35">
+            <img src="{% static 'videosite/img/Light_sussex_hen_bw.jpg' %}" height="50" width="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,10 +58,10 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cam_preview'%}">Camera Preview</a>
+                    <a class="nav-link" href="{% url 'cam_preview'%}">Kamera Preview</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cam_list'%}">Camera List</a>
+                    <a class="nav-link" href="{% url 'cam_list'%}">Kamera Details</a>
                   </li>
                 </ul>                
                 <a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'logout'%}">Logout</a>
@@ -69,7 +69,7 @@
         {% else %}
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cam_preview'%}">Camera Preview</a>
+                    <a class="nav-link" href="{% url 'cam_preview'%}">Kamera Preview</a>
                   </li>
                 </ul>
                 <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'login'%}">Login</a>

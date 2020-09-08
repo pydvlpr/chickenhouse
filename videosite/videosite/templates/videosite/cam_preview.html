@@ -1,0 +1,38 @@
+{% extends "videosite/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+            <h1>Kameras</h1>
+            {% if cam_list %}
+                <table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            {% for cam in cam_list %}
+                                <tr>
+                                    <td>{{cam.name}}</td>
+                                    <td>{{cam.position}}</td>
+                                    <td>PREVIEW</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+                {% else %}
+                    <p>Es sind aktuell keine Kameras verfügbar.</p>
+                {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+            <div class="container">
+                <p>
+                <a href="{% url 'cam_list' %}" class="btn btn-primary">Kamera Liste</a>
+                <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
+                </p>
+            </div>
+        {%endif%}
+{% endblock%}
