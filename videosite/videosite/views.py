@@ -23,9 +23,17 @@ def cam_list(request):
         call list of cameras
     """
     cam_list = Cam.objects.order_by('id')
-    context = {'cam_list':'cam_list'}
+    context = {'cam_list':cam_list}
     return render(request, 'videosite/camera-list.html',context)
 
+# Cam previews
+def cam_preview(request):
+    """
+        prepare cam list for preview site
+    """
+    cam_list = Cam.objects.order_by('id')
+    context = {'cam_list':cam_list}
+    return render(request, 'videosite/cam_preview.html',context)
 
 class CreateCam(CreateView):
     """
@@ -95,9 +103,7 @@ class CreateCam(CreateView):
 class ModifyCam(UpdateView):
     """
         Modify camera settings by form
-    """
-
-    
+    """  
     model = Cam
     fields = ['host','name','position','img_url','stream_url']
 
@@ -112,7 +118,7 @@ class ModifyCam(UpdateView):
             generate form to modify camera settings
         """
         
-        form = super(CreateCam, self).get_form(form_class)
+        form = super(ModifyCam, self).get_form(form_class)
         form.fields['host'].required = True
         form.fields['name'].required = True
         form.fields['position'].required = False
@@ -173,14 +179,6 @@ class DeleteCam(DeleteView):
 
     model = Cam
     success_url = reverse_lazy('cam_list')
-
-
-def CamPreview(request):
-    """
-        Call url from raspi, get and show preview image
-    """
-    
-    pass
 
 def CamStream(request):
     """

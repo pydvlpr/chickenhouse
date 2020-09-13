@@ -21,10 +21,11 @@ from . import views
 urlpatterns = [
 
     #index page
-    path('',views.cam_list, name='index'),
+    #path('',views.cam_list, name='index'),
+    path('',views.cam_preview, name='index'),
 
     # cam preview
-    path('preview/',views.CamPreview, name='cam_preview'),
+    path('preview/',views.cam_preview, name='cam_preview'),
 
     # cam stream
     path('stream/',views.CamStream, name='cam_stream'),
