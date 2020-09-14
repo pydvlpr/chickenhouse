@@ -179,9 +179,13 @@ class DeleteCam(DeleteView):
     model = Cam
     success_url = reverse_lazy('cam_list')
 
-def CamStream(request):
+def CamStream(request,pk):
     """
-        Call url form rapsi, get and show video stream
+        Call video url form rapsi and show stream
     """
+
+    cam = get_object_or_404(Cam, pk=pk)
+    context = {'cam':cam}
+    return render(request, 'videosite/cam_stream.html',context)
+
     
-    pass

@@ -27,8 +27,7 @@ urlpatterns = [
     path('preview/',views.cam_preview, name='cam_preview'),
 
     # cam stream
-    path('stream/',views.CamStream, name='cam_stream'),
-
+    path('stream/<int:pk>/',views.CamStream, name='cam_stream'),
 
     # cam list
     path('cams/',views.cam_list, name='cam_list'),
@@ -38,5 +37,5 @@ urlpatterns = [
     path('cam/modify/<int:pk>/', views.modify_cam, name='modify_cam'),
     path('cam/details/<int:pk>/', views.CamDetails.as_view(), name='cam_details'),
     path('cam/delete/<int:pk>/', views.DeleteCam.as_view(), name='delete_cam'),
-    
+
 ]

@@ -35,6 +35,12 @@
                                             height="20" width="20"
                                             >
                                         </a>
+                                        <a href="{% url 'cam_stream' pk=cam.id %}">
+                                            <img src="{% static 'videosite/ico/eye.svg' %}"
+                                            title="Stream anzeigen"
+                                            height="20" width="20"
+                                            >
+                                        </a>
                                     </td>
                                     <td>{{cam.id}}</td>
                                     <td>{{cam.host}}</td>
@@ -58,9 +64,8 @@
         </div>
     {% else %}    
         <div style="color:red">
-            <h2>Fehler bei der Authentifizierung</h2>
-            <p>Sie dürfen diese Seite nicht anzeigen.</p>
-            <p>Bitte melden Sie sich an.</p>
+            <h2>Authentication error</h2>
+            <p>Login please!</p>
         </div>
     {% endif %}
 

@@ -11,6 +11,9 @@
                             <th>Name</th>
                             <th>Position</th>
                             <th>Preview</th>
+                            {% if user.is_authenticated%}
+                                <th></th>
+                            {% endif %}
                         </tr>
                     </thead>
                         <tbody>
@@ -18,8 +21,16 @@
                                 <tr>
                                     <td>{{cam.name}}</td>
                                     <td>{{cam.position}}</td>
-                                    <!--<td><img src={{cam.img_url}} alt='{{cam.name}} Preview' width="300" height="300"></td>-->
                                     <td><iframe src={{cam.img_url}} title={{cam.name}}Preview></iframe></td>
+                                    {% if user.is_authenticated %}
+                                        <td>
+                                            <a href="{% url 'cam_stream' pk=cam.id %}">
+                                            <img src="{% static 'videosite/ico/eye.svg' %}"
+                                                        title="Stream anzeigen"
+                                                        height="40" width="40">
+                                            </a>
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>

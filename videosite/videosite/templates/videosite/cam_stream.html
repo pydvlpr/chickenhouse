@@ -1,0 +1,28 @@
+{% extends "videosite/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}    
+            {% if cam %}
+                <h1>Kamera {{cam.name}}</h1>
+                <iframe src={{cam.stream_url}} title={{cam.name}}Preview></iframe>
+            {% else %}
+                <div style="color:red" class='container'>
+                    <p>Error! No Camera</p>
+                </div>
+            {% endif %}
+        {% else %}            
+            <div class="container">
+                <div style="color:red">
+                    <h2>Authentication error</h2>
+                    <p>Login please!</p>
+                </div>
+            </div>
+        {% endif %}    
+        <div class="container">
+            <p>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
+            </p>
+        </div>
+{% endblock%}
