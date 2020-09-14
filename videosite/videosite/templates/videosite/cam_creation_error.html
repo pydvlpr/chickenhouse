@@ -1,0 +1,23 @@
+{% extends "videosite/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        {% if error_message %}
+            {% if raum_object %}
+                <div class="container">
+                    <h2  style="color:red">{{error_message}}</h2>
+                </div>
+            {% endif %}
+        {% else %}
+            <div style="color:blue" class='container'>
+                <p>Anderer Fehler!</p>
+            </div>
+        {% endif %}
+        <div class="container">
+            <p>
+            <a href="{% url 'cam_list' %}" class="btn btn-secondary">Zurück</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

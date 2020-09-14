@@ -21,7 +21,6 @@ from . import views
 urlpatterns = [
 
     #index page
-    #path('',views.cam_list, name='index'),
     path('',views.cam_preview, name='index'),
 
     # cam preview
@@ -35,11 +34,9 @@ urlpatterns = [
     path('cams/',views.cam_list, name='cam_list'),
 
     # cam forms
-    path('cam/new/', views.CreateCam.as_view(), name='create_cam'),
-    path('cam/modify/<int:pk>/', views.ModifyCam.as_view(), name='modify_cam'),
+    path('cam/new/', views.create_cam, name='create_cam'),
+    path('cam/modify/<int:pk>/', views.modify_cam, name='modify_cam'),
     path('cam/details/<int:pk>/', views.CamDetails.as_view(), name='cam_details'),
     path('cam/delete/<int:pk>/', views.DeleteCam.as_view(), name='delete_cam'),
-
-    # admin
-    # path('admin/', admin.site.urls),
+    
 ]
