@@ -6,7 +6,7 @@
         {% if user.is_authenticated %}    
             {% if cam %}
                 <h1>Kamera {{cam.name}}</h1>
-                <iframe src={{cam.stream_url}} title={{cam.name}}Preview></iframe>
+                <iframe src={{cam.stream_url}} title={{cam.name}}Preview width="700" height="600></iframe>
             {% else %}
                 <div style="color:red" class='container'>
                     <p>Error! No Camera</p>
