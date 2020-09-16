@@ -6,7 +6,6 @@
             <h1 style="font-size:2vw">Kameras</h1>
             {% if cam_list %}
             <div class="table-responsive">
-                <!--<table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">-->
                 <table class="table" id="dataTable">
                     <thead>
                         <tr>
@@ -24,17 +23,7 @@
                                     <td style="font-size:1.5vw">{{cam.name}}</td>
                                     <td style="font-size:1.5vw">{{cam.position}}</td>
                                     <td>
-                                        <!--
-                                        <div class="container">
-                                            <div class="embed-responsive embed-responsive-16by9">
-                                               <!--<iframe class="embed-responsive-item" src={{cam.img_url}} title="{{cam.name}}Preview"></iframe>-->
-                                        
-                                               <!--<iframe class="responsive-iframe" src={{cam.img_url}} title="{{cam.name}}Preview" ></iframe>-->
-                                            </div>
-                                        </div>
-                                        
                                         <iframe src={{cam.img_url}} title="{{cam.name}}Preview" width=700 height=500></iframe>
-                                    
                                     </td>
                                     
                                         <td>
