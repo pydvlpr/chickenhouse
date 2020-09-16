@@ -5,18 +5,19 @@
 {% block content %}
     <div class="container">
         {% if user.is_authenticated %}
-            <h1>Kameras</h1>
+            <h1 style="font-size:2vw">Kameras</h1>
             {% if cam_list %}
-                <table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">
+            <div class="table-responsive">
+                <table class="table" id="dataTable">
                     <thead>
                         <tr>
-                            <th>Aktion</th>
-                            <th>Kamera-Nr.</th>
-                            <th>Host</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Img URL</th>
-                            <th>Steam URL</th>
+                            <th style="font-size:1vw">Aktion</th>
+                            <th style="font-size:1vw">Kamera-Nr.</th>
+                            <th style="font-size:1vw">Host</th>
+                            <th style="font-size:1vw">Name</th>
+                            <th style="font-size:1vw">Position</th>
+                            <th style="font-size:1vw">Img URL</th>
+                            <th style="font-size:1vw">Steam URL</th>
                         </tr>
                     </thead>
                         <tbody>
@@ -24,37 +25,38 @@
                                 <tr>
                                     <td>
                                         <a href="{% url 'modify_cam' pk=cam.id %}">
-                                            <img src="{% static 'videosite/ico/edit.svg' %}"
+                                            <img class = "img-responsive" src="{% static 'videosite/ico/edit.svg' %}"
                                             title="Kamera ändern"
                                             height="20" width="20"
                                             >
                                         </a>
                                         <a href="{% url 'delete_cam' pk=cam.id %}">
-                                            <img src="{% static 'videosite/ico/delete.svg' %}"
+                                            <img class = "img-responsive" src="{% static 'videosite/ico/delete.svg' %}"
                                             title="Kamera entfernen"
                                             height="20" width="20"
                                             >
                                         </a>
                                         <a href="{% url 'cam_stream' pk=cam.id %}">
-                                            <img src="{% static 'videosite/ico/eye.svg' %}"
+                                            <img class = "img-responsive" src="{% static 'videosite/ico/eye.svg' %}"
                                             title="Stream anzeigen"
                                             height="20" width="20"
                                             >
                                         </a>
                                     </td>
-                                    <td>{{cam.id}}</td>
-                                    <td>{{cam.host}}</td>
-                                    <td>{{cam.name}}</td>
-                                    <td>{{cam.position}}</td>
-                                    <td>{{cam.img_url}}</td>
-                                    <td>{{cam.stream_url}}</td>
+                                    <td style="font-size:1vw">{{cam.id}}</td>
+                                    <td style="font-size:1vw">{{cam.host}}</td>
+                                    <td style="font-size:1vw">{{cam.name}}</td>
+                                    <td style="font-size:1vw">{{cam.position}}</td>
+                                    <td style="font-size:1vw">{{cam.img_url}}</td>
+                                    <td style="font-size:1vw">{{cam.stream_url}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                 </table>
                 {% else %}
                     <p>Es sind aktuell keine Kameras verfügbar.</p>
-                {% endif %}
+            </div>
+            {% endif %}
         </div>
         <div class="container">
             <p>

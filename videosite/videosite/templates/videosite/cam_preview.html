@@ -3,14 +3,16 @@
 
 {% block content %}
     <div class="container">
-            <h1>Kameras</h1>
+            <h1 style="font-size:2vw">Kameras</h1>
             {% if cam_list %}
-                <table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">
+            <div class="table-responsive">
+                <!--<table id="dataTable" class="display table-responsive table-striped table-bordered" style="width:100%">-->
+                <table class="table" id="dataTable">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Preview</th>
+                            <th style="font-size:1.5vw">Name</th>
+                            <th style="font-size:1.5vw">Position</th>
+                            <th style="font-size:1.5vw">Preview</th>
                             {% if user.is_authenticated%}
                                 <th></th>
                             {% endif %}
@@ -19,18 +21,30 @@
                         <tbody>
                             {% for cam in cam_list %}
                                 <tr>
-                                    <td>{{cam.name}}</td>
-                                    <td>{{cam.position}}</td>
-                                    <td><iframe src={{cam.img_url}} title={{cam.name}}Preview></iframe></td>
-                                    {% if user.is_authenticated %}
+                                    <td style="font-size:1.5vw">{{cam.name}}</td>
+                                    <td style="font-size:1.5vw">{{cam.position}}</td>
+                                    <td>
+                                        <!--
+                                        <div class="container">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                               <!--<iframe class="embed-responsive-item" src={{cam.img_url}} title="{{cam.name}}Preview"></iframe>-->
+                                        
+                                               <!--<iframe class="responsive-iframe" src={{cam.img_url}} title="{{cam.name}}Preview" ></iframe>-->
+                                            </div>
+                                        </div>
+                                        
+                                        <iframe src={{cam.img_url}} title="{{cam.name}}Preview" width=700 height=500></iframe>
+                                    
+                                    </td>
+                                    
                                         <td>
                                             <a href="{% url 'cam_stream' pk=cam.id %}">
                                             <img src="{% static 'videosite/ico/eye.svg' %}"
                                                         title="Stream anzeigen"
-                                                        height="40" width="40">
+                                                        height="35" width="35">
                                             </a>
                                         </td>
-                                    {% endif %}
+                                    
                                 </tr>
                             {% endfor %}
                         </tbody>

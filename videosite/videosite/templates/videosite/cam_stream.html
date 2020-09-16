@@ -3,23 +3,20 @@
 
 {% block content %}
     <div class="container">
-        {% if user.is_authenticated %}    
+        
             {% if cam %}
-                <h1>Kamera {{cam.name}}</h1>
-                <iframe src={{cam.stream_url}} title={{cam.name}}Preview width="700" height="600></iframe>
+                <h1 style="font-size:2vw">Kamera {{cam.name}}</h1>
+                <div class="container">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{cam.stream_url}}" title="{{cam.name}}Stream"></iframe>
+                    </div>
+                </div>
             {% else %}
                 <div style="color:red" class='container'>
-                    <p>Error! No Camera</p>
+                    <p "font-size:1vw">Error! No Camera</p>
                 </div>
             {% endif %}
-        {% else %}            
-            <div class="container">
-                <div style="color:red">
-                    <h2>Authentication error</h2>
-                    <p>Login please!</p>
-                </div>
-            </div>
-        {% endif %}    
+        
         <div class="container">
             <p>
             <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
