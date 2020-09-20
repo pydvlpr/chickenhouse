@@ -16,7 +16,7 @@ from http import server
 
 
 
-HOST_NAME = '' PendingDeprecationWarning
+HOST_NAME = ''
 PORT = 8000
 
 # HTML pages to serve
