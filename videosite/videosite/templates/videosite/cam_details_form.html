@@ -3,59 +3,71 @@
 <!-- Custom styles for this site -->
 
 {% block content %}
-<div class="container">
-    <h1>Kurs Details</h1>
-    <table class="table table-bordered table-responsive">
-        <tr>
-            <th>
-                Kamera-ID:
-            </th>
-            <td>
-                {{ object.id}}
-            </td>
-        </tr>
-        <tr>
-            <th>
-                Host:
-            </th>
+{% if user.is_authenticated %}
+    <div class="container">
+        <h1>Kamera Details</h1>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>
+                    Kamera-ID:
+                </th>
                 <td>
-                    {{ object.host}}
+                    {{ object.id}}
                 </td>
-        </tr>
-        <tr>
-            <th>
-                Name:
-            </th>
+            </tr>
+            <tr>
+                <th>
+                    Host:
+                </th>
+                    <td>
+                        {{ object.host}}
+                    </td>
+            </tr>
+            <tr>
+                <th>
+                    Name:
+                </th>
+                    <td>
+                        {{ object.name}}
+                    </td>
+            </tr>
+            <tr>
+                <th>
+                    Position:
+                </th>
                 <td>
-                    {{ object.name}}
+                    {{ object.position}}
                 </td>
-        </tr>
-        <tr>
-            <th>
-                Position:
-            </th>
-            <td>
-                {{ object.position}}
-            </td>
-        </tr>
-        <tr>
-            <th>
-                Preview URL:
-            </th>
-            <td>
-                {{ object.url}}
-            </td>
-        </tr>
-        <tr>
-            <th>
-                Stream URL:
-            </th>
-            <td>
-                {{ object.url}}
-            </td>
-        </tr>
-    </table>
-    <a class="btn btn-secondary" href="{% url 'cam_list' %}">Zurück</a>
-</div>
+            </tr>
+            <tr>
+                <th>
+                    Preview URL:
+                </th>
+                <td>
+                    {{ object.url}}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Stream URL:
+                </th>
+                <td>
+                    {{ object.url}}
+                </td>
+            </tr>
+        </table>
+        <a class="btn btn-secondary" href="{% url 'cam_list' %}">Zurück</a>
+    </div>
+{% else %}
+    <div class="container">
+        <div style="color:red">
+            <h2>Authentication error</h2>
+            <p>Login please!</p>
+        </div>
+        <p>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
+        </p>
+    </div>
+{% endif %}
 
 {% endblock %}

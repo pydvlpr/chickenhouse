@@ -4,6 +4,7 @@
 <!-- Custom styles for this site -->
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class=container style="position: relative">
     <h1>Kamera erstellen</h1>
     <form method="post">{% csrf_token %}
@@ -14,5 +15,16 @@
         <a class="btn btn-secondary" href="{% url 'cam_list' %}">Zurück</a>
     </form>
 </div>
+{% else %}
+    <div class="container">
+        <div style="color:red">
+            <h2>Authentication error</h2>
+            <p>Login please!</p>
+        </div>
+        <p>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
+        </p>
+    </div>
+{% endif %}
 
 {% endblock %}

@@ -16,7 +16,13 @@
                     <p "font-size:1vw">Error! No Camera</p>
                 </div>
             {% endif %}
-        {% endif %}
+        {% else %}
+            <div class="container">
+                <div style="color:red">
+                    <h2>Authentication error</h2>
+                    <p>Login please!</p>
+            </div>
+    {% endif %}
         <div class="container">
             <p>
             <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>
