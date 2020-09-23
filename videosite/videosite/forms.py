@@ -15,9 +15,8 @@ class CamForm(forms.ModelForm):
         self.fields['img_url'].required = False
         self.fields['img_url'].disabled = True
         self.fields['stream_url'].required = False
-        self.fields['stream_url'].disabled =True
-        
-        
+        self.fields['stream_url'].disabled =True    
+              
         for field in self.fields:
             help_text = self.fields[field].help_text
             # to be improved
@@ -32,7 +31,8 @@ class CamForm(forms.ModelForm):
         model = Cam
 
         fields = (  'host', 'name', 'position',
-                    'img_url', 'stream_url'
+                    'protocol',
+                    'img_url', 'stream_url',
                  )
         
         success_url = reverse_lazy('cam_list')

@@ -53,8 +53,8 @@ def create_cam(request):
             new_cam = form.save(commit=False)
             
             # build urls by hostname
-            new_cam.img_url = "https://{}/preview/".format(new_cam.host)
-            new_cam.stream_url = "https://{}/stream/".format(new_cam.host)
+            new_cam.img_url = "{}://{}/preview/".format(new_cam.protocol,new_cam.host)
+            new_cam.stream_url = "{}://{}/stream/".format(new_cam.protocol,new_cam.host)
 
             new_cam.save()
             return redirect('cam_list')
