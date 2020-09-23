@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="container">
-        
+        {% if user.is_authenticated%}
             {% if cam %}
                 <h1 style="font-size:2vw">Kamera {{cam.name}}</h1>
                 <div class="container">
@@ -16,7 +16,7 @@
                     <p "font-size:1vw">Error! No Camera</p>
                 </div>
             {% endif %}
-        
+        {% endif %}
         <div class="container">
             <p>
             <a href="{% url 'index' %}" class="btn btn-secondary">Zurück</a>

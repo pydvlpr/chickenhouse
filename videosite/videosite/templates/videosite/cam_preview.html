@@ -25,7 +25,7 @@
                                     <td>
                                         <iframe src={{cam.img_url}} title="{{cam.name}}Preview" width=700 height=500></iframe>
                                     </td>
-                                    
+                                    {% if user.is_authenticated%}
                                         <td>
                                             <a href="{% url 'cam_stream' pk=cam.id %}">
                                             <img src="{% static 'videosite/ico/eye.svg' %}"
@@ -33,7 +33,7 @@
                                                         height="35" width="35">
                                             </a>
                                         </td>
-                                    
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>
