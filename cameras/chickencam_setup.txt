@@ -1,0 +1,28 @@
+# Create Working directory:
+
+sudo mkdir /var/chickencam
+
+# copy camera-http.py to working directory (example for copy from users home)
+
+sudo cp ~/camera-http.py /var/chickencam/
+
+# Create user for service
+
+sudo useradd -r -s /bin/false -G video chickencam
+
+# change permissions of working directory
+
+sudo chown -R chickencam.chickencam /var/chickencam
+
+# start service
+
+sudo systemctl start chickencam
+
+# enable service (starts while bootint)
+
+sudo systemctl enable chickencam
+
+
+
+
+
