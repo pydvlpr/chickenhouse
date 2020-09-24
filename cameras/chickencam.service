@@ -1,0 +1,19 @@
+[Unit]
+Description=Chickencam Server
+After=syslog.target
+
+[Service]
+Type=simple
+User=chickencam
+Group=chickencam
+WorkingDirectory=/var/chickencam
+ExecStart=/var/chickencam/camera-http.py
+SyslogIdentifier=chickencam
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+

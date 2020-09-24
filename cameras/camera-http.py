@@ -1,11 +1,10 @@
+#!/usr/bin/python3 
 import io
 import picamera
 import logging
 import socketserver
 from threading import Condition
 from http import server
-
-
 
 HOST_NAME = '' 
 PORT = 8000
