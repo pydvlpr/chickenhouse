@@ -1,0 +1,33 @@
+# /etc/systemd/system/chickenhouse.service
+
+[Unit]
+Description=Django Chickenhouse App
+
+# Requirements
+Requires=network.target
+
+# Dependency ordering
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+RestartSec=10
+Restart=always
+
+# path to app
+WorkingDirectory=/var/django/projects/videosite
+# the user that you want to run app by
+
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+# Logging 
+SyslogIdentifier=chickencam
+StandardOutput=syslog
+StandardError=syslog
+
+# Main process
+ExecStart=/usr/local/bin/uwsgi --ini /var/django/projects/videosite_wsgi.ini
+[Install]
+WantedBy=multi-user.target
