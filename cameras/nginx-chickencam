@@ -1,0 +1,44 @@
+# forward all http traffic to https
+server {
+    listen 80;
+    listen [::]:80;
+    server_name chickencam1.yourdomain.tl;
+    return 301 https://$server_name$request_uri;
+    }
+
+server {
+
+        # the port your site will be served on
+        #listen     443 ssl spdy;
+        listen     443 ssl http2;
+        listen     [::]:443 ssl http2;
+    
+        # the domain name it will serve for
+        server_name        chickencam1.yourdomain.tl; # substitute your machine's IP address or FQDNA
+        keepalive_timeout   70;
+        charset             utf-8;
+    
+        # max upload size
+        client_max_body_size 75M;   # adjust to taste
+    
+        # ssl configuration
+        ssl_certificate     /etc/ssl/certs/yourdomain.tl_ssl_certificate.cer;
+        ssl_certificate_key /etc/ssl/private/yourdomain.tl_private_key.key;
+
+        ssl_protocols       TLSv1.2 TLSv1.3;
+    
+        ssl_ciphers 'TLS-CHACHA20-POLY1305-SHA256:TLS-AES-256-GCM-SHA384:TLS-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+        ssl_prefer_server_ciphers on;
+        ssl_ecdh_curve secp521r1:secp384r1:prime256v1;
+   
+	location /preview/ {
+		# pass to python http server
+		proxy_pass http://127.0.0.1:8000;
+	}
+
+	location /stream/ {
+		# pass to python http server
+		proxy_pass http://127.0.0.1:8000;
+        }
+
+}
